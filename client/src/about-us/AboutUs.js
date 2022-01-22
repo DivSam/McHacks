@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AboutUs.css";
+import { Link } from "react-router-dom";
 
 export default class AboutUs extends Component {
   render() {
@@ -42,6 +43,7 @@ export default class AboutUs extends Component {
             </p>
           </div>
         </div>
+        <Link to="/">Home</Link>
       </div>
     );
   }

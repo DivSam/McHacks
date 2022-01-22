@@ -11,14 +11,14 @@ export default class Prompt extends React.Component {
             currentX : 0,
             currentY : 0,
         };
-        this.speed = props.speed/100;
+        this.spanArray = this.generateSpanArray();
     }
 
     updatePos() {
         this.setState(
             {
-                currentX:this.state.currentX + this.speed,
-                currentY:this.state.currentY + this.speed
+                currentX:this.state.currentX + this.props.xSpeed/1000,
+                currentY:this.state.currentY + this.props.ySpeed/1000
             }
         )
     }
@@ -26,6 +26,13 @@ export default class Prompt extends React.Component {
         const interval = setInterval(() => {
             this.updatePos();
         }, 1)
+
+        this.setState(
+            {
+                currentX:this.props.initX,
+                currentY:this.props.initY
+            }
+        )
     }
     setCoordinates(x,y) {
         return `position:absolute;
@@ -33,13 +40,22 @@ export default class Prompt extends React.Component {
                 top:${y}px;
                 `
     }
+
+    generateSpanArray()
+    {
+        let spanArray = [];
+        console.log(this.props.content);
+        for (var i = 0; i < this.props.content.length; i++)
+        {   
+            spanArray.push(<span>{this.props.content.charAt(i)}</span>)
+        }
+        return spanArray;
+    }
     render()
     {
-        console.log(this.state.currentX);
-        console.log(this.state.currentY);
         return (
             <div className = "tomato" style={{position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
-                {this.props.content}
+                {this.spanArray}
             </div>
         )
     }

@@ -23,20 +23,8 @@ class Home extends Component {
             <Link to="prompt" className="nav-links">
               Game1{" "}
             </Link>
-            <Link to="hidden" className="nav-links">
-              Game2{" "}
-            </Link>
-            <Link to="prompt" className="nav-links">
-              Game1{" "}
-            </Link>
-            <Link to="prompt" className="nav-links">
-              Game1{" "}
-            </Link>
-            <Link to="prompt" className="nav-links">
-              Game1{" "}
-            </Link>
             <Link to="cards" className="nav-links">
-              GameX{" "}
+              Create Quizlets{" "}
             </Link>
           </ul>
         </div>

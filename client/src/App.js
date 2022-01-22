@@ -6,9 +6,7 @@ import AboutUs from "./about-us/AboutUs";
 import Home from "./home-page/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import NameForm from "./main-game/input";
-import Cardsaver from "./quizlets/cardsaver"
-import TypingGameComponent from "./second-game/hidden";
-
+import Cardsaver from "./quizlets/cardsaver";
 function App() {
   return (
     <div className="App">
@@ -21,12 +19,8 @@ function App() {
             <PromptController initWords={["hello", "goodbye", "potato"]} />
           }
         ></Route>
+        <Route path="text" element={<NameForm></NameForm>}></Route>
         <Route path="cards" element={<Cardsaver></Cardsaver>}></Route>
-
-        <Route
-          path="hidden"
-          element={<TypingGameComponent></TypingGameComponent>}
-        ></Route>
       </Routes>
     </div>
   );

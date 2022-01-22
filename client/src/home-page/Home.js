@@ -8,20 +8,30 @@ class Home extends Component {
     return (
       <body>
         <div className="nav-bar">
-          <ul>
+          <ul className="nav-items">
             <Link to="about" className="nav-links">
               About Us{" "}
             </Link>
-            <Link to="mchacks" className="nav-links">
-              McHacks{" "}
-            </Link>
           </ul>
         </div>
-        <div className="TitlePage"></div>
+        <div className="TitlePage">
+          <p className="Descrip">
+            For McHacks9, our team decided to build a comfy react/nodejs web app
+            designed for some fun studying or party games. We were mostly
+            inspired by websites like typeracer and quizlet!
+            <br></br>
+            Instructions:
+            <br />
+            Step 1: Create/Import some prompts and answers
+            <br />
+            Step 2: Try to answer the prompts as fast as possible before the
+            words fall on your head!
+          </p>
+        </div>
         <div className="modes">
           <ul>
             <Link to="prompt" className="nav-links">
-              Game1{" "}
+              Play Game{" "}
             </Link>
             <Link to="cards" className="nav-links">
               Create Quizlets{" "}
@@ -30,9 +40,7 @@ class Home extends Component {
         </div>
         <div className="bottom">
           <ul>
-            <a href="" className="nav-links">
-              Here wit the gang
-            </a>
+            <a href="" className="nav-links"></a>
           </ul>
         </div>
       </body>

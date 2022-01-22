@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import "./cardsaver.css"
+import { Link } from 'react-router-dom';
 
 export default class Cardsaver extends Component{
 
     constructor(props){
         super(props)
         this.state = {
-            cards_saved:[["asdads","as"]],
+            cards_saved:[["Prompt","Answer"]],
             text:'',
             answer:'',
             selectedfile: null,
@@ -84,14 +86,18 @@ export default class Cardsaver extends Component{
                     )
                 });
         return(
-        <div>
-            <form onSubmit={this.handleSubmit}>
+            <body>
+                <div className='description'>
+                    <h1 className='title'>Add New Words or Import Files!</h1>
+                </div>
+                <div className='main'>
+            <form onSubmit={this.handleSubmit} className='form'>
                 <input  type="text" value = {this.state.text} onChange={this.handleText}></input>
                 <input type="text" value = {this.state.answer} onChange={this.handleAnswer}></input>
                 <input type = "submit" value = "Submit"/>
             </form>
-            <div>
-                <ol>
+            <div className='theList'>
+                <ol >
                     {cards_render}
                 </ol>
             </div>
@@ -99,8 +105,24 @@ export default class Cardsaver extends Component{
             <input id = 'files' type = 'file' name = 'file' onChange={this.onFileChange}/>
             
             <button type = 'button' onClick = {this.downloadCards}>Download Cards</button>
-            
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Link to="/" className="nav-links">Home</Link>
         </div>
+        <div className="bottom">
+          <ul>
+            <a href="" className="nav-links">
+              
+            </a>
+          </ul>
+        </div>
+        
+        
+        
+            </body>
+        
         )
     }
 }

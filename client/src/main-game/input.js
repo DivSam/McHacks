@@ -1,28 +1,6 @@
 import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
-/*
-export default class MyInput extends Component{
-    constructor(props) {
-        super(props)
-        this.state = {
-            text:''
-        };
-    }
-    validateword(word) {
-        return (word === 'potato') ? '' : word
-        
-    }
-    handleChange(event){
-        this.setState({text: word === 'potato'? '' :this.state.text})
-    }
-    render() {
-        return (
-        <form>
-        <textarea></textarea>
-        </form>
-        )
-    }
-}*/
+
 export default class NameForm extends React.Component {
     constructor(props) {
       super(props);

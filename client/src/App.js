@@ -1,16 +1,32 @@
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <NavigationBar></NavigationBar>
+//       <AboutUs></AboutUs>
+//       <PromptController initWords={["hello", "goodbye", "potato"]}/>
+
 import logo from './logo.svg';
-import './App.css';
-import Prompt from "./main-game/Prompt.js"
-import Nameform from './main-game/input.js';
-import NavigationBar from './navbar/NavigationBar';
-import AboutUs from './about-us/AboutUs';
 import PromptController from './main-game/PromptController';
+import NavigationBar from './navbar/NavigationBar';
+import "./App.css";
+import Prompt from "./main-game/Word.js";
+import AboutUs from "./about-us/AboutUs";
+import Home from "./home-page/Home";
+import { Routes, Route, Link } from "react-router-dom";
+import NameForm from "./main-game/input";
 function App() {
   return (
     <div className="App">
-      <NavigationBar></NavigationBar>
-      <AboutUs></AboutUs>
-      <PromptController initWords={["hello", "goodbye", "potato"]}/>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="about" element={<AboutUs></AboutUs>}></Route>
+        <Route
+          path="prompt"
+          element={<Prompt content="hello" speed={10}></Prompt>}
+        ></Route>
+        <Route path="text" element={<NameForm></NameForm>}></Route>
+      </Routes>
     </div>
   );
 }

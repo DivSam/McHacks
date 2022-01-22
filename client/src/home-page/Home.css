@@ -1,0 +1,35 @@
+.TitlePage {
+  background-color: #f08d7e;
+  display: flexbox;
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  font-size: 1.2rem;
+}
+
+.Title {
+  padding-top: 20%;
+  color: white;
+}
+
+.nav-links {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+}
+
+.nav-bar {
+  display: flex;
+  background-color: #dda6b9;
+  height: 100%;
+  justify-content: center;
+}
+
+.bottom {
+  position: absolute;
+  background-color: #acaec5;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

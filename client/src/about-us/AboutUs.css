@@ -1,13 +1,9 @@
 .BigBody {
-  background: linear-gradient(
-    90deg,
-    rgb(25, 192, 192) 0%,
-    rgb(168, 38, 38) 100%
-  );
-
-  display: flex;
+  background-color: #f08d7e;
+  position: absolute;
+  display: flexbox;
   justify-content: center;
-  height: max-content;
+  height: 95%;
 }
 
 .flex-container {
@@ -23,4 +19,12 @@
 }
 .role {
   font-style: italic;
+}
+
+.bottom {
+  position: absolute;
+  background-color: #acaec5;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }

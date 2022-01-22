@@ -1,11 +1,19 @@
 import React, { Component, createContext } from 'react';
 
-
+/*
 export default class MyInput extends Component{
     constructor(props) {
         super(props)
         this.state = {
+            text:''
         };
+    }
+    validateword(word) {
+        return (word === 'potato') ? '' : word
+        
+    }
+    handleChange(event){
+        this.setState({text: word === 'potato'? '' :this.state.text})
     }
     render() {
         return (
@@ -14,4 +22,22 @@ export default class MyInput extends Component{
         </form>
         )
     }
-}
+}*/
+export default class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: ''};
+      this.handleChange = this.handleChange.bind(this);
+    }
+  
+    handleChange(event) {    this.setState({value: event.target.value === this.props.wordx ? '' : event.target.value});  }
+  
+    render() {
+      return (
+        <form>
+            Current Word:
+            <textarea type="text" value={this.state.value} onChange={this.handleChange} />        
+        </form>
+      );
+    }
+  }

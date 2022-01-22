@@ -10,15 +10,19 @@ export default class Prompt extends React.Component {
             timeSinceSpawned : 0,
             currentX : 0,
             currentY : 0,
+            xSpeed: this.props.xSpeed,
+            ySpeed: this.props.ySpeed
         };
         this.spanArray = this.generateSpanArray();
+        console.log("HELLo");
+        
     }
 
     updatePos() {
         this.setState(
             {
-                currentX:this.state.currentX + this.props.xSpeed/1000,
-                currentY:this.state.currentY + this.props.ySpeed/1000
+                currentX:this.state.currentX + this.state.xSpeed/500,
+                currentY:this.state.currentY + this.state.ySpeed/500
             }
         )
     }
@@ -44,17 +48,24 @@ export default class Prompt extends React.Component {
     generateSpanArray()
     {
         let spanArray = [];
-        console.log(this.props.content);
+        var color = "red";
         for (var i = 0; i < this.props.content.length; i++)
         {   
-            spanArray.push(<span>{this.props.content.charAt(i)}</span>)
+            console.log("A LETTER");
+            
+            if (i < this.props.curr_text.length && (this.props.content.charAt(i) != this.props.curr_text.charAt(i)))
+            {
+                color = "blue";
+            }
+
+            spanArray.push(<span style={{color:color}}>{this.props.content.charAt(i)}</span>)
         }
         return spanArray;
     }
     render()
     {
         return (
-            <div className = "tomato" style={{position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
+            <div className = "tomato" style={{color:"red", position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
                 {this.spanArray}
             </div>
         )

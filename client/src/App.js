@@ -1,18 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import Prompt from "./main-game/Prompt.js"
-import Nameform from './input.js';
-import Prompt from "./main-game/Word.js"
+import Nameform from './main-game/input.js';
 import NavigationBar from './navbar/NavigationBar';
 import AboutUs from './about-us/AboutUs';
-
+import PromptController from './main-game/PromptController';
 function App() {
   return (
     <div className="App">
-      <Prompt content="hello" initX={200} initY={10} speed={10} xSpeed={0} ySpeed={200}/>
       <NavigationBar></NavigationBar>
       <AboutUs></AboutUs>
-      <Nameform></Nameform>
+      <PromptController initWords={["hello", "goodbye", "potato"]}/>
     </div>
   );
 }

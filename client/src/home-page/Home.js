@@ -10,20 +10,28 @@ class Home extends Component {
         <div className="nav-bar">
           <ul>
             <Link to="about" className="nav-links">
-              About{" "}
-            </Link>
-            <Link to="faq" className="nav-links">
-              Faq{" "}
+              About Us{" "}
             </Link>
             <Link to="mchacks" className="nav-links">
               McHacks{" "}
             </Link>
           </ul>
         </div>
-        <div className="TitlePage">
-          <h1 className="Title">TyperRacerGamerThingy</h1>
-          <br />
-          <ul className="GamesList">
+        <div className="TitlePage"></div>
+        <div className="modes">
+          <ul>
+            <Link to="prompt" className="nav-links">
+              Game1{" "}
+            </Link>
+            <Link to="hidden" className="nav-links">
+              Game2{" "}
+            </Link>
+            <Link to="prompt" className="nav-links">
+              Game1{" "}
+            </Link>
+            <Link to="prompt" className="nav-links">
+              Game1{" "}
+            </Link>
             <Link to="prompt" className="nav-links">
               Game1{" "}
             </Link>

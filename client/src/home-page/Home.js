@@ -23,6 +23,9 @@ class Home extends Component {
             <Link to="prompt" className="nav-links">
               Game1{" "}
             </Link>
+            <Link to="cards" className="nav-links">
+              Create Quizlets{" "}
+            </Link>
           </ul>
         </div>
         <div className="bottom">

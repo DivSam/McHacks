@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import myInput from './input';
+import MyInput from './input.js';
 
 function App() {
   return (
     <div className="App">
-      <myInput></myInput>
+      <MyInput/>
     </div>
   );
 }

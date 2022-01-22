@@ -1,17 +1,17 @@
 import React, { Component, createContext } from 'react';
 
 
-export default class myInput extends Component{
+export default class MyInput extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            text:'current text'
         };
     }
     render() {
         return (
-            <div>potato</div>
-        );
-
+        <form>
+        <textarea></textarea>
+        </form>
+        )
     }
 }

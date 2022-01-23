@@ -64,7 +64,6 @@ export default class Cardsaver extends Component{
         this.setState({
             cards_saved:content
         })
-        this.props.save_cards(this.state.cards_saved)
     }
     onFileChange(event){
         let newfilereader = new FileReader()
@@ -85,6 +84,7 @@ export default class Cardsaver extends Component{
         this.setState(
             {inGame:true}
         )
+        console.log(this.state.cards_saved);
     }
     render(){
         if (this.state.inGame)

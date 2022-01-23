@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import Explosion from "react-explode/Babuyan"
 export default class Prompt extends React.Component {
     constructor(props) {
         super(props);
@@ -38,6 +38,7 @@ export default class Prompt extends React.Component {
             }
         )
     }
+
     setCoordinates(x,y) {
         return `position:absolute;
                 left:${x}px;
@@ -48,15 +49,14 @@ export default class Prompt extends React.Component {
     generateSpanArray()
     {
         let spanArray = [];
-        var color = "red";
+        var color = "green";
         for (var i = 0; i < this.props.content.length; i++)
         {   
-            console.log("A LETTER");
             
-            if (i < this.props.curr_text.length && (this.props.content.charAt(i) != this.props.curr_text.charAt(i)))
-            {
-                color = "blue";
-            }
+            // if (i < this.props.curr_text.length && (this.props.content.charAt(i) != this.props.curr_text.charAt(i)))
+            // {
+            //     color = "blue";
+            // }
 
             spanArray.push(<span style={{color:color}}>{this.props.content.charAt(i)}</span>)
         }
@@ -64,6 +64,11 @@ export default class Prompt extends React.Component {
     }
     render()
     {
+        if (this.props.exploding)
+        {
+            return (<Explosion size="400" delay={0} repeatDelay={0.1} repeat={5} />         );
+        }
+        
         return (
             <div className = "tomato" style={{color:"red", position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
                 {this.spanArray}

@@ -7,13 +7,32 @@ export default class PromptController extends React.Component {
         super(props);
         this.checkWordArray = this.checkWordArray.bind(this);
         this.wordDict = new Map();
-        for (var i = 0; i < this.props.cards.length; i++)
-        {
-            this.wordDict.set(this.props.cards[i][1], this.props.cards[i][0]);
-        }
+        console.log(this.props.cards);
+        this.shuffleArray(this.props.cards);
+        // for (var i = 0; i < this.props.cards.length; i++)
+        // {
+        //     this.wordDict.set(this.props.cards[i][1], this.props.cards[i][0]);
+        // }
+        const interval = setInterval(() => {
+            var card = this.props.cards.pop();
+            this.wordDict.set(card[1], card[0]);
+            this.updateWordList('');
+            if (this.props.cards.length == 0)
+            {
+                clearInterval(interval);
+            }
+        }, 3000)
         this.wordComponents = null;
         this.updateWordList('');
         console.log(this.props.cards)
+    }
+    shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
     checkWordArray(word) {
         if (this.wordDict.has(word))
@@ -36,7 +55,11 @@ export default class PromptController extends React.Component {
         for (var word of this.wordDict) {
             wordList.push(word[1]);
         }
-        this.wordComponents = wordList.map((w) => <Prompt curr_text={curr_text} key={"prompt" + w} content={w} initX={Math.random() * 500 + 200} initY={10} xSpeed={0} ySpeed={Math.random() * 200 + 100}/>)
+        this.wordComponents = [];
+        this.wordDict.forEach((p, a) => this.wordComponents.push(
+            <Prompt exploding={false} curr_text={curr_text} key={"prompt" + a} content={p} initX={Math.random() * 1000 + 200} initY={10} xSpeed={0} ySpeed={Math.random() * 200 + 100}/>
+        ))
+
         this.forceUpdate();
     }
 

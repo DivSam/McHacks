@@ -7,7 +7,7 @@ export default class Cardsaver extends Component{
     constructor(props){
         super(props)
         this.state = {
-            cards_saved:[["Prompt","Answer"]],
+            cards_saved:[],
             text:'',
             answer:'',
             selectedfile: null,
@@ -43,6 +43,8 @@ export default class Cardsaver extends Component{
             text:'',
             answer:''
             })
+
+        /*this.props.save_cards(this.state.cards_saved)*/
         event.preventDefault();
     }
     downloadCards(){
@@ -60,6 +62,7 @@ export default class Cardsaver extends Component{
         this.setState({
             cards_saved:content
         })
+        this.props.save_cards(this.state.cards_saved)
     }
     onFileChange(event){
         let newfilereader = new FileReader()
@@ -86,42 +89,31 @@ export default class Cardsaver extends Component{
                     )
                 });
         return(
-            <body>
+            <div>
                 <div className='description'>
                     <h1 className='title'>Add New Words or Import Files!</h1>
                 </div>
                 <div className='main'>
-            <form onSubmit={this.handleSubmit} className='form'>
-                <input  type="text" value = {this.state.text} onChange={this.handleText}></input>
-                <input type="text" value = {this.state.answer} onChange={this.handleAnswer}></input>
-                <input type = "submit" value = "Submit"/>
-            </form>
-            <div className='theList'>
-                <ol >
-                    {cards_render}
-                </ol>
+                    <form onSubmit={this.handleSubmit} className='form'>
+                        <input  type="text" value = {this.state.text} onChange={this.handleText}></input>
+                        <input type="text" value = {this.state.answer} onChange={this.handleAnswer}></input>
+                        <input type = "submit" value = "Submit"/>
+                    </form>
+                    <div className='theList'>
+                        <ol >
+                            {cards_render}
+                        </ol>
+                    </div>
+                    <input id = 'files' type = 'file' name = 'file' onChange={this.onFileChange}/>
+
+                    <button type = 'button' onClick = {this.downloadCards}>Download Cards</button>
+                    <br></br>
+                    <button type = 'button' onClick = {this.props.handlePlay}>Play</button>
+                    <br></br>
+                    <Link to="/" className="nav-links">Home</Link>
+
+                </div>
             </div>
-            
-            <input id = 'files' type = 'file' name = 'file' onChange={this.onFileChange}/>
-            
-            <button type = 'button' onClick = {this.downloadCards}>Download Cards</button>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <Link to="/" className="nav-links">Home</Link>
-        </div>
-        <div className="bottom">
-          <ul>
-            <a href="" className="nav-links">
-              
-            </a>
-          </ul>
-        </div>
-        
-        
-        
-            </body>
         
         )
     }

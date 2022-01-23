@@ -7,6 +7,7 @@ import Home from "./home-page/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import NameForm from "./main-game/input";
 import Cardsaver from "./quizlets/cardsaver";
+
 function App() {
   return (
     <div className="App">
@@ -20,7 +21,10 @@ function App() {
           }
         ></Route>
         <Route path="text" element={<NameForm></NameForm>}></Route>
-        <Route path="cards" element={<Cardsaver></Cardsaver>}></Route>
+        <Route path="cards" element={
+          <Cardsaver></Cardsaver>
+        }></Route>
+        <Route></Route>
       </Routes>
     </div>
   );

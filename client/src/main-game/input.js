@@ -23,11 +23,12 @@ export default class NameForm extends React.Component {
     }
     render() {
       return (
-          <div className='something'>
+        <div>
+        <div className='something' class="form__group">
               <form className='current'>
-            Current Word:
-            <textarea type="text" value={this.state.value} onChange={this.onChanges} />        
+            <textarea id="answer" class="form__field" placeholder="Write Answers Here" type="text" value={this.state.value} onChange={this.onChanges} /> 
         </form>
+        </div>
 
         
         <div className="bottom-of-page">
@@ -38,7 +39,7 @@ export default class NameForm extends React.Component {
 
         
 
-          </div>
+        </div>
         
         
       );

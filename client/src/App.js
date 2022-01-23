@@ -7,13 +7,14 @@ import Home from "./home-page/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import NameForm from "./main-game/input";
 import Cardsaver from "./quizlets/cardsaver";
-
+import WinScreen from "./win-screen/WinScreen";
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="about" element={<AboutUs></AboutUs>}></Route>
+        <Route path="won" element={<WinScreen></WinScreen>}></Route>
         <Route
           path="prompt"
           element={

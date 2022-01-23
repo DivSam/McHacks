@@ -70,7 +70,7 @@ export default class Prompt extends React.Component {
         }
         
         return (
-            <div className = "tomato" style={{color:"red", position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
+            <div className = "letter" style={{color:"red", position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
                 {this.spanArray}
             </div>
         )

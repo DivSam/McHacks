@@ -2,17 +2,21 @@ import Prompt from './Prompt.js'
 import NameForm from './input.js'
 import React from 'react';
 import TypingGameComponent from './PromptColor.js';
+import Timer from "./Timer.js";
+import "./Timer.css"
+import WinScreen from '../win-screen/WinScreen.js';
+import { Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 export default class PromptController extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            won:false
+        };
         this.checkWordArray = this.checkWordArray.bind(this);
         this.wordDict = new Map();
         console.log(this.props.cards);
         this.shuffleArray(this.props.cards);
-        // for (var i = 0; i < this.props.cards.length; i++)
-        // {
-        //     this.wordDict.set(this.props.cards[i][1], this.props.cards[i][0]);
-        // }
         const interval = setInterval(() => {
             var card = this.props.cards.pop();
             this.wordDict.set(card[1], card[0]);
@@ -24,6 +28,7 @@ export default class PromptController extends React.Component {
         }, 3000)
         this.wordComponents = null;
         this.updateWordList('');
+        this.setWon.bind(this);
         console.log(this.props.cards)
     }
     shuffleArray(array) {
@@ -50,7 +55,7 @@ export default class PromptController extends React.Component {
 
     updateWordList(curr_text)
     {
-        // TODO: FIX SPEED CHANGING
+        //TODO: FIX SPEED CHANGING
         var wordList = [];
         for (var word of this.wordDict) {
             wordList.push(word[1]);
@@ -59,23 +64,37 @@ export default class PromptController extends React.Component {
         this.wordDict.forEach((p, a) => this.wordComponents.push(
             <Prompt exploding={false} curr_text={curr_text} key={"prompt" + a} content={p} initX={Math.random() * 1000 + 200} initY={10} xSpeed={0} ySpeed={Math.random() * 200 + 100}/>
         ))
-
+        if (wordList.length == 0)
+        {
+            this.state.won = true;
+        }
+        
         this.forceUpdate();
     }
-
+    setWon(bool)
+    {
+        this.state.won=bool;
+    }
     render()
     {
-
-        return (
-
-        <div>
-            <NameForm wordx={"potato"} checkWordArray = {this.checkWordArray}/>
-            <TypingGameComponent word="carrot"/>
-             <div>
-                {this.wordComponents}
-            </div> 
-        </div>   
-        )
+        if (this.state.won) 
+        {
+            return (
+                <WinScreen setWon = {this.setWon}></WinScreen>
+            )
+        }
+        else{
+            return (
+                <div>
+                    <Timer></Timer>
+                    <NameForm checkWordArray = {this.checkWordArray}/>
+                     <div>
+                        {this.wordComponents}
+                    </div> 
+                </div>   
+                )
+        }
+        
     }
 }
 

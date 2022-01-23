@@ -92,34 +92,58 @@ export default class Cardsaver extends Component{
             return <PromptController initWords={["hey", "jude"]} cards={this.state.cards_saved}/>
         }
             const cards_saved = this.state.cards_saved
-            const cards_render = cards_saved.map((answer) =>{
-                    return (
-                        <li key = {answer}>
-                            Text: {answer[0]} Answer: {answer[1]}
-                        </li>
-                    )
-                });
+            const questions_render = []
+            const answers_render = []
+            const other_render = []
+            for (const answer of cards_saved.slice(0, 5))
+            {
+                questions_render.push(<li key = {answer[0]}>
+                    Q: {answer[0]}
+                </li>)
+                answers_render.push(<li key = {answer[1]}>
+                    A: {answer[1]}
+                </li>)
+            }
+
+            if (cards_saved.length > 5)
+            {
+                other_render.push(<div>And {cards_saved.length - 5} more</div>)
+            }
+            if (cards_saved.length === 0 )
+            {
+                other_render.push(<div>You have no questions and answers yet</div>)
+            }
         return(
             <div>
                 <div className='description'>
-                    <h1 className='title'>Add New Words or Import Files!</h1>
+                    <h1 className='title'>Add New Questions and Answers by Typing Them or Uploading a File in JSON Format</h1>
                 </div>
-                <div className='main'>
+                <div class="form__group" className='main'>
                     <form onSubmit={this.handleSubmit} className='form'>
-                        <input  type="text" value = {this.state.text} onChange={this.handleText}></input>
-                        <input type="text" value = {this.state.answer} onChange={this.handleAnswer}></input>
-                        <input type = "submit" value = "Submit"/>
+                        <input class="form__field" placeholder="Enter a question here" type="text" value = {this.state.text} onChange={this.handleText}></input>
+                        <input class="form__field" placeholder="Enter the corresponding answer here" type="text" value = {this.state.answer} onChange={this.handleAnswer}></input>
+                        <input class="button-45" type = "submit" value = "Submit"/>
                     </form>
-                    <div className='theList'>
-                        <ol >
-                            {cards_render}
-                        </ol>
+                    <br/>
+                    <div>
+                    <div class="theList">Current questions and answers:</div>
+                    <br/>
+                    <div style={{display:"inline-block", width:"50%",margin:"auto"}}>
+                    <ul class="tableA">
+                    <div style={{textAlign:"left"}}>{questions_render}</div>
+                    </ul>
+                    <ul class="tableB">
+                    <div style={{textAlign:"right"}}>{answers_render}</div>
+                    </ul>
                     </div>
-                    <input id = 'files' type = 'file' name = 'file' onChange={this.onFileChange}/>
+                    {other_render}
+                    <br/>
+                    </div>
 
-                    <button type = 'button' onClick = {this.downloadCards}>Download Cards</button>
+                    <input  class="hide_file" id = 'files' type = 'file' name = 'file' onChange={this.onFileChange}/>
+                    <button class="button-45" type = 'button' onClick = {this.downloadCards}>Download Cards</button>
                     <br></br>
-                    <button type = 'button' onClick = {this.handlePlay}>Play</button>
+                    <button class="button-45" type = 'button' onClick = {this.handlePlay}>Play</button>
                     <br></br>
                     <Link to="/" className="nav-links">Home</Link>
 

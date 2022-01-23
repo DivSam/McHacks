@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./cardsaver.css"
 import { Link } from 'react-router-dom';
-
+import PromptController from '../main-game/PromptController';
 export default class Cardsaver extends Component{
 
     constructor(props){
@@ -11,12 +11,14 @@ export default class Cardsaver extends Component{
             text:'',
             answer:'',
             selectedfile: null,
-            filereader:null
+            filereader:null,
+            inGame:false
         };
 
         this.handleText = this.handleText.bind(this)
         this.handleAnswer = this.handleAnswer.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handlePlay = this.handlePlay.bind(this)
         this.downloadCards = this.downloadCards.bind(this)
         this.handleFileRead = this.handleFileRead.bind(this)
         this.onFileChange = this.onFileChange.bind(this)
@@ -78,8 +80,17 @@ export default class Cardsaver extends Component{
 
 
     }
-
+    handlePlay()
+    {
+        this.setState(
+            {inGame:true}
+        )
+    }
     render(){
+        if (this.state.inGame)
+        {
+            return <PromptController initWords={["hey", "jude"]} cards={this.state.cards_saved}/>
+        }
             const cards_saved = this.state.cards_saved
             const cards_render = cards_saved.map((answer) =>{
                     return (
@@ -108,7 +119,7 @@ export default class Cardsaver extends Component{
 
                     <button type = 'button' onClick = {this.downloadCards}>Download Cards</button>
                     <br></br>
-                    <button type = 'button' onClick = {this.props.handlePlay}>Play</button>
+                    <button type = 'button' onClick = {this.handlePlay}>Play</button>
                     <br></br>
                     <Link to="/" className="nav-links">Home</Link>
 

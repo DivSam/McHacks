@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cardsaver from './cardsaver'
 import QuizGame from './QuizGame'
+import { Link } from 'react-router-dom';
 
 export default class QuizGameControl extends Component{
     constructor(props){
@@ -27,10 +28,9 @@ export default class QuizGameControl extends Component{
             return (
                 <div>
                     <Cardsaver save_cards = {this.save_cards}></Cardsaver>
-                    <div>
-                        <button type = 'button' onClick = {this.handlePlay}>Play</button>
-                    </div>
                 </div>
+               
+
             )
         }
         else{

@@ -5,7 +5,7 @@ export default class Cardsaver extends Component{
     constructor(props){
         super(props)
         this.state = {
-            cards_saved:[["asdads","as"]],
+            cards_saved:[],
             text:'',
             answer:'',
             selectedfile: null,
@@ -40,7 +40,9 @@ export default class Cardsaver extends Component{
             cards_saved:this.state.cards_saved.concat([[this.state.text, this.state.answer]]),
             text:'',
             answer:''
-            })
+            }, () =>{this.props.save_cards(this.state.cards_saved)})
+
+        /*this.props.save_cards(this.state.cards_saved)*/
         event.preventDefault();
     }
     downloadCards(){
@@ -58,6 +60,7 @@ export default class Cardsaver extends Component{
         this.setState({
             cards_saved:content
         })
+        this.props.save_cards(this.state.cards_saved)
     }
     onFileChange(event){
         let newfilereader = new FileReader()
@@ -99,7 +102,6 @@ export default class Cardsaver extends Component{
             <input id = 'files' type = 'file' name = 'file' onChange={this.onFileChange}/>
             
             <button type = 'button' onClick = {this.downloadCards}>Download Cards</button>
-            
         </div>
         )
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./cardsaver.css"
 import { Link } from 'react-router-dom';
 import PromptController from '../main-game/PromptController';
+import Navbar from '../home-page/Navbar';
 export default class Cardsaver extends Component{
 
     constructor(props){
@@ -98,10 +99,10 @@ export default class Cardsaver extends Component{
             for (const answer of cards_saved.slice(0, 5))
             {
                 questions_render.push(<li key = {answer[0]}>
-                    Q: {answer[0]}
+                    QUESTION: {answer[0]}
                 </li>)
                 answers_render.push(<li key = {answer[1]}>
-                    A: {answer[1]}
+                    ANSWER: {answer[1]}
                 </li>)
             }
 
@@ -115,6 +116,9 @@ export default class Cardsaver extends Component{
             }
         return(
             <div>
+                <div className="nav-bar">
+                <Navbar/>
+                </div>
                 <div className='description'>
                     <h1 className='title'>Add New Questions and Answers by Typing Them or Uploading a File in JSON Format</h1>
                 </div>
@@ -145,7 +149,6 @@ export default class Cardsaver extends Component{
                     <br></br>
                     <button class="button-45" type = 'button' onClick = {this.handlePlay}>Play</button>
                     <br></br>
-                    <Link to="/" className="nav-links">Home</Link>
 
                 </div>
             </div>

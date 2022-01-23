@@ -1,0 +1,11 @@
+.nav-bar {
+    background-color: #f08d7e;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+  }
+.link {
+    padding:0.5rem 1.5rem;
+    text-decoration: none;
+}

@@ -1,0 +1,17 @@
+.main-body
+{
+
+    background-color: #efa18a;
+    justify-content: center;
+    height:100%;
+    width: 100%;
+    position: absolute;
+    font-size: 1.2rem;
+
+}
+
+span
+{
+    color:"black";
+    font-weight:500
+}

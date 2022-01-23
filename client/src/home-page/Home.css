@@ -1,7 +1,7 @@
 .TitlePage {
   background-color: #efa18a;
   justify-content: center;
-  height: 90%;
+  height:100%;
   width: 100%;
   position: absolute;
   font-size: 1.2rem;
@@ -9,7 +9,7 @@
 
 .Title {
   padding-top: 20%;
-  color: white;
+  color: black;
   text-align: center;
 }
 
@@ -27,13 +27,6 @@
   justify-content: right;
 }
 
-.bottom {
-  position: absolute;
-  background-color: #acaec5;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
 
 .modes {
   background-color: #e2bab1;
@@ -47,7 +40,8 @@
 }
 
 .Descrip {
-  color: white;
+  color: black;
   text-align: center;
   padding-top: 10rem;
+  font-weight:500;
 }

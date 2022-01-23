@@ -1,5 +1,5 @@
 .BigBody {
-  background-color: #f08d7e;
+  background-color: #efa18a;
   position: absolute;
   display: flexbox;
   justify-content: center;
@@ -21,10 +21,3 @@
   font-style: italic;
 }
 
-.bottom {
-  position: absolute;
-  background-color: #acaec5;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}

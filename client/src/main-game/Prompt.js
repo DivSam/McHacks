@@ -4,6 +4,7 @@ export default class Prompt extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            fontsize:this.props.fontsize,
             value : null,
             pos : (0,0),
             count : 0,
@@ -23,6 +24,12 @@ export default class Prompt extends React.Component {
             {
                 currentX:this.state.currentX + this.state.xSpeed/500,
                 currentY:this.state.currentY + this.state.ySpeed/500
+            },
+            () => {
+                if (this.state.currentY >= 850)
+                {
+                    this.props.loseGame();
+                }
             }
         )
     }
@@ -49,7 +56,6 @@ export default class Prompt extends React.Component {
     generateSpanArray()
     {
         let spanArray = [];
-        var color = "green";
         for (var i = 0; i < this.props.content.length; i++)
         {   
             
@@ -58,19 +64,15 @@ export default class Prompt extends React.Component {
             //     color = "blue";
             // }
 
-            spanArray.push(<span style={{color:color}}>{this.props.content.charAt(i)}</span>)
+            spanArray.push(<span >{this.props.content.charAt(i)}</span>)
         }
         return spanArray;
     }
     render()
     {
-        if (this.props.exploding)
-        {
-            return (<Explosion size="400" delay={0} repeatDelay={0.1} repeat={5} />         );
-        }
         
         return (
-            <div className = "letter" style={{color:"red", position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
+            <div className = "letter" style={{fontSize:this.state.fontsize, position:'absolute', left:this.state.currentX, top:this.state.currentY}}>
                 {this.spanArray}
             </div>
         )

@@ -7,29 +7,44 @@ import "./Timer.css"
 import WinScreen from '../win-screen/WinScreen.js';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
+import "./PromptController.css"
+import LoseScreen from '../lose-screen/LoseScreen.js';
 export default class PromptController extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            won:false
+            won:"in_game",
+            time:0
         };
         this.checkWordArray = this.checkWordArray.bind(this);
+        this.originalCards = this.props.cards.slice();
+        this.setWon = this.setWon.bind(this);
+        this.reset = this.reset.bind(this);
+        this.incrementTime = this.incrementTime.bind(this);
+        this.loseGame = this.loseGame.bind(this);
+    }
+    componentDidMount()
+    {
+        this.reset();
+    }
+
+    reset()
+    {
+        this.currCards = this.originalCards.slice();
+        this.numWordsLeft = this.currCards.length;
         this.wordDict = new Map();
-        console.log(this.props.cards);
-        this.shuffleArray(this.props.cards);
+        this.shuffleArray(this.currCards);
         const interval = setInterval(() => {
-            var card = this.props.cards.pop();
+            var card = this.currCards.pop();
             this.wordDict.set(card[1], card[0]);
             this.updateWordList('');
-            if (this.props.cards.length == 0)
+            if (this.currCards.length == 0)
             {
                 clearInterval(interval);
             }
-        }, 3000)
+        }, 2000)
         this.wordComponents = null;
         this.updateWordList('');
-        this.setWon.bind(this);
-        console.log(this.props.cards)
     }
     shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {
@@ -42,7 +57,12 @@ export default class PromptController extends React.Component {
     checkWordArray(word) {
         if (this.wordDict.has(word))
         {
+            this.numWordsLeft --;
             this.wordDict.delete(word);
+            if (this.numWordsLeft == 0)
+            {
+                this.state.won = "win";
+            }
             this.updateWordList('');
             return word;
         }
@@ -52,7 +72,14 @@ export default class PromptController extends React.Component {
             return null;
         }
     }
-
+    loseGame()
+    {
+        this.setState(
+            {
+                won:"loss"
+            }
+        )
+    }
     updateWordList(curr_text)
     {
         //TODO: FIX SPEED CHANGING
@@ -62,31 +89,43 @@ export default class PromptController extends React.Component {
         }
         this.wordComponents = [];
         this.wordDict.forEach((p, a) => this.wordComponents.push(
-            <Prompt exploding={false} curr_text={curr_text} key={"prompt" + a} content={p} initX={Math.random() * 1000 + 200} initY={10} xSpeed={0} ySpeed={Math.random() * 200 + 100}/>
+            <Prompt loseGame={this.loseGame} curr_text={curr_text} key={"prompt" + a} content={p} initX={Math.random() * 1000 + 200} initY={10} xSpeed={0} ySpeed={Math.random() * 400 + 200} className="falling-word" fontsize={Math.random() * 20 + 20}/>
         ))
-        if (wordList.length == 0)
-        {
-            this.state.won = true;
-        }
         
         this.forceUpdate();
     }
-    setWon(bool)
+    setWon()
     {
-        this.state.won=bool;
+        this.setState({
+            won:"in_game"
+        })
+    }
+
+    incrementTime()
+    {
+        console.log("incrementing time")
+        this.setState({
+            time:this.state.time + 1
+        })
     }
     render()
     {
-        if (this.state.won) 
+        if (this.state.won == "win") 
         {
             return (
-                <WinScreen setWon = {this.setWon}></WinScreen>
+                <WinScreen reset = {this.reset} setWon = {this.setWon} time = {this.state.time}></WinScreen>
+            )
+        }
+        else if (this.state.won == "loss")
+        {
+            return (
+                <LoseScreen reset = {this.reset} setWon = {this.setWon} time = {this.state.time}></LoseScreen>
             )
         }
         else{
             return (
-                <div>
-                    <Timer></Timer>
+                <div className="main-body">
+                    <Timer incrementTime={this.incrementTime}></Timer>
                     <NameForm checkWordArray = {this.checkWordArray}/>
                      <div>
                         {this.wordComponents}

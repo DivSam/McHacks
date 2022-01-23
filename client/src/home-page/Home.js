@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-
+import Navbar from "./Navbar";
 class Home extends Component {
   state = {};
   render() {
     return (
       <body>
         <div className="nav-bar">
-          <ul className="nav-items">
-            <Link to="about" className="nav-links">
-              About Us{" "}
-            </Link>
-          </ul>
+          <Navbar/>
         </div>
         <div className="TitlePage">
           <p className="Descrip">
@@ -28,21 +24,7 @@ class Home extends Component {
             words fall on your head!
           </p>
         </div>
-        <div className="modes">
-          <ul>
-            <Link to="prompt" className="nav-links">
-              Play Game{" "}
-            </Link>
-            <Link to="cards" className="nav-links">
-              Create Quizlets{" "}
-            </Link>
-          </ul>
-        </div>
-        <div className="bottom">
-          <ul>
-            <a href="" className="nav-links"></a>
-          </ul>
-        </div>
+
       </body>
     );
   }

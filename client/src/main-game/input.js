@@ -29,16 +29,6 @@ export default class NameForm extends React.Component {
             <textarea id="answer" class="form__field" placeholder="Write Answers Here" type="text" value={this.state.value} onChange={this.onChanges} /> 
         </form>
         </div>
-
-        
-        <div className="bottom-of-page">
-          <ul>
-          <Link to="/" className='back-to-home'>Home</Link>
-          </ul>
-        </div>
-
-        
-
         </div>
         
         

@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "node server/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "build": "^0.1.4",
     "express": "^4.17.2",
     "react-explode": "^2.0.5",
     "react-pure-lifecycle": "^3.0.0",

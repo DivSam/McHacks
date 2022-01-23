@@ -15,13 +15,13 @@ $gray: #9b9b9b;
   padding-top: 43%;
 }
 
-/* .bottom-of-page {
+.bottom-of-page {
   position: absolute;
   background-color: #acaec5;
   left: 0;
   bottom: 0;
   right: 0;
-} */
+}
 
 .back-to-home {
   color: rgb(255, 255, 255);

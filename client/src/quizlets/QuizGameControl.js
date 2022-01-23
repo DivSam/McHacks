@@ -28,7 +28,6 @@ export default class QuizGameControl extends Component{
                 <div>
                     <Cardsaver save_cards = {this.save_cards}></Cardsaver>
                     <div>
-                        <br></br>
                         <button type = 'button' onClick = {this.handlePlay}>Play</button>
                     </div>
                 </div>

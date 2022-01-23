@@ -48,9 +48,7 @@ export default class AboutUs extends Component {
         </div>
         <div className="bottom">
           <ul>
-            <a href="" className="nav-links">
-              Here wit the gang
-            </a>
+            <a href="" className="nav-links"></a>
           </ul>
         </div>
       </body>

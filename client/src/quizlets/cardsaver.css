@@ -1,0 +1,35 @@
+.main {
+  background-color: #efa18a;
+  justify-content: center;
+  position: absolute;
+  height: 90%;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.description {
+  height: 100%;
+  background-color: #efa18a;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.theList {
+  color: azure;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.bottom {
+  position: absolute;
+  background-color: #acaec5;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

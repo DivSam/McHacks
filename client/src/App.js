@@ -7,6 +7,7 @@ import Home from "./home-page/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import NameForm from "./main-game/input";
 import QuizGameControl from "./quizlets/QuizGameControl";
+
 function App() {
   return (
     <div className="App">

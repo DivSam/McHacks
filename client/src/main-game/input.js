@@ -1,5 +1,6 @@
 import React, { Component, createContext } from 'react';
 import { Link } from 'react-router-dom';
+import "./input.css"
 
 export default class NameForm extends React.Component {
     constructor(props) {
@@ -22,13 +23,21 @@ export default class NameForm extends React.Component {
     }
     render() {
       return (
-          <div>
-              <form>
+          <div className='something'>
+              <form className='current'>
             Current Word:
             <textarea type="text" value={this.state.value} onChange={this.onChanges} />        
         </form>
 
-        <Link to="/">Home</Link>
+        
+        <div className="bottom-of-page">
+          <ul>
+          <Link to="/" className='back-to-home'>Home</Link>
+          </ul>
+        </div>
+
+        
+
           </div>
         
         

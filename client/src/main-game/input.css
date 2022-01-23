@@ -1,0 +1,26 @@
+.something {
+  background-color: #f08d7e;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.current {
+  padding-top: 43%;
+}
+
+.bottom-of-page {
+  position: absolute;
+  background-color: #acaec5;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.back-to-home {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
